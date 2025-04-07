@@ -1,12 +1,25 @@
 package com.duoc.proyecto_semana2;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
+@Entity
 public class Movie {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
     private int year;
     private String director;
     private String genre;
     private String synopsis;
+
+
+    public Movie() {
+    }
+
 
     public Movie(int id, String title, int year, String director, String genre, String synopsis) {
         this.id = id;
@@ -64,5 +77,4 @@ public class Movie {
     public void setSynopsis(String synopsis) { 
         this.synopsis = synopsis; 
     }
-    
 }
