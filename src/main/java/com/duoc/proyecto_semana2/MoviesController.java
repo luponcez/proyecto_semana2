@@ -1,8 +1,14 @@
 package com.duoc.proyecto_semana2;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import java.util.HashMap;
+import java.util.Map;
 
+
+import java.util.HashMap;
 import java.util.List;
 @CrossOrigin(origins = "*")
 @RestController
@@ -30,7 +36,15 @@ public class MoviesController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteMovie(@PathVariable int id) {
+    public ResponseEntity<Map<String, String>> deleteMovie(@PathVariable int id) {
         movieRepository.deleteById(id);
+        
+        Map<String, String> response = new HashMap<>();
+        response.put("mensaje", "Registro ID: " + id + " ELIMINADO CORRECTAMENTE");
+        
+        return ResponseEntity.ok(response);
     }
+
+
+    
 }
