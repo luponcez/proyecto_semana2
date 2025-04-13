@@ -24,9 +24,13 @@ public class MoviesController {
         return movieRepository.findById(id).orElse(null);
     }
 
-    // Cree adicionalmente un endpoint para crear peliculas
     @PostMapping
     public Movie createMovie(@RequestBody Movie movie) {
         return movieRepository.save(movie);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteMovie(@PathVariable int id) {
+        movieRepository.deleteById(id);
     }
 }
